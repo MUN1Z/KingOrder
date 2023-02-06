@@ -2,6 +2,7 @@
 @using KingOrder.Application.Shared.Services;
 @using KingOrder.Application.Shared.ViewModels.Response;
 @inject IKingOrderApiService KingOrderApiService
+@inject ISnackbar Snackbar
 
 <PageTitle>Products</PageTitle>
 
@@ -15,16 +16,28 @@ else
 {
     <MudTable Items="products" Hover="true" SortLabel="Sort By" Elevation="0">
         <HeaderContent>
+            <MudTh><MudTableSortLabel SortBy="new Func<ProductResponseViewModel, object>(x=>x.Thumb)">Image</MudTableSortLabel></MudTh>
             <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<ProductResponseViewModel, object>(x=>x.Name)">Name</MudTableSortLabel></MudTh>
             <MudTh><MudTableSortLabel SortBy="new Func<ProductResponseViewModel, object>(x=>x.Description)">Description</MudTableSortLabel></MudTh>
             <MudTh><MudTableSortLabel SortBy="new Func<ProductResponseViewModel, object>(x=>x.Gtin)">Gtin</MudTableSortLabel></MudTh>
             <MudTh><MudTableSortLabel SortBy="new Func<ProductResponseViewModel, object>(x=>x.Price)">Price</MudTableSortLabel></MudTh>
+            <MudTh></MudTh>
         </HeaderContent>
         <RowTemplate>
+            <MudTd DataLabel="Image">
+                <MudAvatar Image="@GetImageWithHeader(context.Thumb)" style="transform:rotate(90deg);" />
+            </MudTd>
             <MudTd DataLabel="Name">@context.Name</MudTd>
             <MudTd DataLabel="Description">@context.Description</MudTd>
             <MudTd DataLabel="Gtin">@context.Gtin</MudTd>
             <MudTd DataLabel="Price">@context.Price</MudTd>
+            <MudTd DataLabel="Actions">
+                <MudMenu Icon="@Icons.Material.Filled.MoreVert">
+                    <MudMenuItem @onclick="(args) => OnViewClick(args, context)">View</MudMenuItem>
+                    <MudMenuItem @onclick="(args) => OnEditClick(args, context)">Edit</MudMenuItem>
+                    <MudMenuItem @onclick="(args) => OnDeleteClick(args, context)">Delete</MudMenuItem>
+                </MudMenu>
+            </MudTd>
         </RowTemplate>
         <PagerContent>
             <MudTablePager PageSizeOptions="new int[]{50, 100}" />
@@ -35,9 +48,28 @@ else
 
 @code {
     private IEnumerable<ProductResponseViewModel>? products;
+    private string imageHeader = "data:image/png;base64,";
 
     protected override async Task OnInitializedAsync()
     {
         products = await KingOrderApiService.GetProductsAsync();
+    }
+
+    private string GetImageWithHeader(string thumb)
+        => imageHeader + thumb;
+
+    private async Task OnViewClick(MouseEventArgs e, ProductResponseViewModel product)
+    {
+        Snackbar.Add($"OnViewClick: {product.Guid}");
+    }
+
+    private async Task OnEditClick(MouseEventArgs e, ProductResponseViewModel product)
+    {
+        Snackbar.Add($"OnEditClick: {product.Guid}");
+    }
+
+    private async Task OnDeleteClick(MouseEventArgs e, ProductResponseViewModel product)
+    {
+        Snackbar.Add($"OnDeleteClick: {product.Guid}");
     }
 }
