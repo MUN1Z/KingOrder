@@ -1,0 +1,43 @@
+﻿@page "/products"
+@using KingOrder.Application.Shared.Services;
+@using KingOrder.Application.Shared.ViewModels.Response;
+@inject IKingOrderApiService KingOrderApiService
+
+<PageTitle>Products</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true">Products</MudText>
+<MudText Class="mb-8">List of all products in the system.</MudText>
+@if (products == null)
+{
+    <MudProgressCircular Color="Color.Default" Indeterminate="true" />
+}
+else
+{
+    <MudTable Items="products" Hover="true" SortLabel="Sort By" Elevation="0">
+        <HeaderContent>
+            <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<ProductResponseViewModel, object>(x=>x.Name)">Name</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<ProductResponseViewModel, object>(x=>x.Description)">Description</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<ProductResponseViewModel, object>(x=>x.Gtin)">Gtin</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<ProductResponseViewModel, object>(x=>x.Price)">Price</MudTableSortLabel></MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Name">@context.Name</MudTd>
+            <MudTd DataLabel="Description">@context.Description</MudTd>
+            <MudTd DataLabel="Gtin">@context.Gtin</MudTd>
+            <MudTd DataLabel="Price">@context.Price</MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager PageSizeOptions="new int[]{50, 100}" />
+        </PagerContent>
+    </MudTable>
+}
+
+
+@code {
+    private IEnumerable<ProductResponseViewModel>? products;
+
+    protected override async Task OnInitializedAsync()
+    {
+        products = await KingOrderApiService.GetProductsAsync();
+    }
+}
