@@ -5,6 +5,8 @@ Azure Deploy Blazor FrontEnd: https://kingorderblazor.azurewebsites.net/ --Not c
 
 Azure Deploy API: [https://kingorderapi.azurewebsites.net/swagger/index.html](https://kingorderapi.azurewebsites.net/swagger/index.html)
 
+Xamarin Android APP V1.0.0 apk: https://drive.google.com/file/d/1TL57UGVpV9c-70xk7OdHSQPsUSMqagGb/view?usp=share_link
+
 See the Wiki Page: https://github.com/Mun1z/KingOrder/wiki
 
 See roadmap project here: https://github.com/users/MUN1Z/projects/3
