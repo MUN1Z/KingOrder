@@ -4,6 +4,7 @@
 @inject IKingOrderApiService KingOrderApiService
 @inject ISnackbar Snackbar
 @inject IDialogService DialogService
+@inject IJSRuntime JS
 
 <PageTitle>Products</PageTitle>
 
@@ -62,6 +63,7 @@ else
     private async Task OnViewClick(MouseEventArgs e, ProductResponseViewModel product)
     {
         Snackbar.Add($"OnViewClick: {product.Guid}");
+        await JS.InvokeAsync<string>("customLog", "teste");
     }
 
     private async Task OnEditClick(MouseEventArgs e, ProductResponseViewModel product)

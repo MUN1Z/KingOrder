@@ -1,4 +1,6 @@
 ﻿@page "/vonage"
+@inject IJSRuntime JS
+@inject ISnackbar Snackbar
 
 <PageTitle>Vonage</PageTitle>
 
@@ -8,7 +10,9 @@
 
 
 @code {
-    private void StartCall()
+    private async void StartCall()
     {
+        Snackbar.Add("Starting Vonage!");
+        await JS.InvokeAsync<string>("startVonage");
     }
 }
