@@ -1,7 +1,7 @@
 # KingOrder
 The main objective of the project is to develop a system to list and detail the data of products and start video calls using Vonage library.
 
-Azure Deploy Blazor FrontEnd: https://kingorderblazor.azurewebsites.net/ --Not created yet
+Azure Deploy Blazor FrontEnd: https://kingorderblazor.azurewebsites.net/ --In Develoment
 
 Azure Deploy API: [https://kingorderapi.azurewebsites.net/swagger/index.html](https://kingorderapi.azurewebsites.net/swagger/index.html)
 
