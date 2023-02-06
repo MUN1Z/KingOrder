@@ -1,7 +1,7 @@
 # KingOrder
 The main objective of the project is to develop a system to list and detail the data of products and start video calls using Vonage library.
 
-Azure Deploy Blazor FrontEnd: https://kingorderblazor.azurewebsites.net/ --In Develoment
+Azure Deploy Blazor FrontEnd: https://kingorderblazor.azurewebsites.net/
 
 Azure Deploy API: [https://kingorderapi.azurewebsites.net/swagger/index.html](https://kingorderapi.azurewebsites.net/swagger/index.html)
 
@@ -22,6 +22,12 @@ Xamarin Mobile Android App Running Screenshots:
 ![photo_2023-02-06_12-50-55](https://user-images.githubusercontent.com/17263249/217018967-31768d97-0dad-409d-9881-d0f9ec4a25b7.jpg)
 
 ![photo_2023-02-06_12-50-55 (2)](https://user-images.githubusercontent.com/17263249/217018963-8f4661f6-913b-450a-83d2-120551399e18.jpg)
+
+Blazor website:
+
+![image](https://user-images.githubusercontent.com/17263249/217080158-5391369c-4529-4d6e-acb2-c3f2ec792b5c.png)
+
+![image](https://user-images.githubusercontent.com/17263249/217080283-2daf1c7a-72a5-4d7a-b524-fb27aaf0ba4c.png)
 
 App Insigths:
 
