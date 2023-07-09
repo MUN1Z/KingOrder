@@ -8,6 +8,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Configuration;
 using VamoPlay.Database.Seed;
+using Microsoft.AspNetCore.Identity;
+using VamoPlay.CrossCutting.Auth.Entities;
+using VamoPlay.CrossCutting.IoC.Stores;
 
 namespace VamoPlay.CrossCutting.IoC
 {
@@ -38,6 +41,33 @@ namespace VamoPlay.CrossCutting.IoC
             services.AddDbContext<VamoPlayContext>(optionsBuilder => optionsBuilder.UseInMemoryDatabase("VamoPlayContext"));
 
             services.AddScoped<IDatabaseManager, DatabaseManager>();
+
+            InjectIdentity(services, configuration);
+        }
+
+        public static void InjectIdentity(IServiceCollection services, IConfiguration configuration)
+        {
+            // Add Identity (Membership Provider)
+            services.AddIdentity<UserIdentity, IdentityRole>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequiredLength = 6;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+            })
+                .AddEntityFrameworkStores<VamoPlayContext>()
+                .AddDefaultTokenProviders();
+
+            // Configure Token Expiration time
+            services.Configure<DataProtectionTokenProviderOptions>(options =>
+            {
+                var tokenOptions = configuration.GetSection("ResetTokenOptions");
+                options.TokenLifespan = TimeSpan.FromMinutes(Convert.ToDouble(tokenOptions["ExpireMinutes"]));
+            });
+
+            // Configure SaveChanges behavior
+            services.AddScoped<IUserStore<UserIdentity>, CustomUserStore>();
         }
 
         public static void RegisterServices(IServiceCollection services)

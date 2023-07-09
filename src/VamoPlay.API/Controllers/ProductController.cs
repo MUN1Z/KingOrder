@@ -1,6 +1,6 @@
 using VamoPlay.Application.Filters;
 using VamoPlay.Application.Services.Interfaces;
-using VamoPlay.Application.Shared.ViewModels.Response;
+using VamoPlay.Application.ViewModels.Response;
 using Microsoft.AspNetCore.Mvc;
 
 namespace VamoPlay.API.Controllers

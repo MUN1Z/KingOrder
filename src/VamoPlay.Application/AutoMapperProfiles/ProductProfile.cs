@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using VamoPlay.Application.Shared.ViewModels.Response;
+using VamoPlay.Application.ViewModels.Response;
 using VamoPlay.Domain.Entities;
 
 namespace VamoPlay.Application.AutoMapperProfiles

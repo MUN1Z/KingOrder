@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\VamoPlay.Domain.Shared\VamoPlay.Domain.Shared.csproj" />
-  </ItemGroup>
-
 </Project>

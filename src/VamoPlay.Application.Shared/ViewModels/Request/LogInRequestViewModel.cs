@@ -1,24 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using VamoPlay.Application.Shared.Attributes;
+using VamoPlay.Application.Shared.Constants;
+using VamoPlay.Application.Shared.Resources;
 
 namespace VamoPlay.Application.Shared.ViewModels.Response
 {
     [Serializable]
     public class LogInRequestViewModel : IViewModel
     {
-        [Required]
-        [EmailAddress]
+        [LocalizedRequired(CisopResourceManager.EmailIsRequired)]
+        [LocalizedEmailAddress(CisopResourceManager.InvalidEmailFormat)]
+        [LocalizedMaxLength(RequestConstants.Length255, CisopResourceManager.EmailMaxLength)]
         public string Email { get; set; }
 
-        [Required]
         [DataType(DataType.Password)]
+        [LocalizedRequired(CisopResourceManager.PasswordIsRequired)]
+        [LocalizedMaxLength(RequestConstants.Length255, CisopResourceManager.PasswordMaxLength)]
         public string Password { get; set; }
-
-        [Display(Name = "Remember me")]
-        public bool RememberMe { get; set; }
-        public string ReturnUrl { get; set; }
-
-        public IList<object> ExternalLogins { get; set; }
     }
 }

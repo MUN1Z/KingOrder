@@ -1,5 +1,5 @@
 ﻿using VamoPlay.Application.Filters;
-using VamoPlay.Application.Shared.ViewModels.Response;
+using VamoPlay.Application.ViewModels.Response;
 
 namespace VamoPlay.Application.Services.Interfaces
 {

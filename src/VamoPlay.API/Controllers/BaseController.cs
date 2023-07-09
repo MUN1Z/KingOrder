@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc;
-using VamoPlay.Application.Shared.ViewModels.Response;
-using VamoPlay.Application.Shared.Exceptions;
+using VamoPlay.Application.ViewModels.Response;
+using VamoPlay.Application.Exceptions;
 
 namespace VamoPlay.API.Controllers
 {

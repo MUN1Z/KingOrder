@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VamoPlay.Application.Shared\VamoPlay.Application.Shared.csproj" />
     <ProjectReference Include="..\VamoPlay.Application\VamoPlay.Application.csproj" />
     <ProjectReference Include="..\VamoPlay.CrossCutting.IoC\VamoPlay.CrossCutting.IoC.csproj" />
   </ItemGroup>

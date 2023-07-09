@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using VamoPlay.Application.Filters;
-using VamoPlay.Application.Shared.Extensions;
-using VamoPlay.Application.Shared.ViewModels.Response;
+using VamoPlay.Application.Extensions;
+using VamoPlay.Application.ViewModels.Response;
 using VamoPlay.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Xunit;

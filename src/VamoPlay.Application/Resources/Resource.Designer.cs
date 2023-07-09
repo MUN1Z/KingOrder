@@ -61,11 +61,155 @@ namespace VamoPlay.Application.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You are limited to choosing only 5 favorite Products..
+        ///   Looks up a localized string similar to E-mail.
         /// </summary>
-        internal static string limit_favorite_exception {
+        internal static string email {
             get {
-                return ResourceManager.GetString("limit_favorite_exception", resourceCulture);
+                return ResourceManager.GetString("email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail já registrado..
+        /// </summary>
+        internal static string email_already__registered {
+            get {
+                return ResourceManager.GetString("email_already _registered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O e-mail já está em uso..
+        /// </summary>
+        internal static string email_already_used {
+            get {
+                return ResourceManager.GetString("email_already_used", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro ao tentar enviar e-mail. Por favor, verifique se as configurações de e-mail estão preenchidas corretamente..
+        /// </summary>
+        internal static string email_config_invalid {
+            get {
+                return ResourceManager.GetString("email_config_invalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configurações de e-mail não encontradas..
+        /// </summary>
+        internal static string email_config_not_found {
+            get {
+                return ResourceManager.GetString("email_config_not_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configuração de Email.
+        /// </summary>
+        internal static string email_configuration {
+            get {
+                return ResourceManager.GetString("email_configuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recuperação de Senha.
+        /// </summary>
+        internal static string email_forgot_password {
+            get {
+                return ResourceManager.GetString("email_forgot_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail obrigatório..
+        /// </summary>
+        internal static string email_is_required {
+            get {
+                return ResourceManager.GetString("email_is_required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O e-mail deve ter no máximo {0} caracteres..
+        /// </summary>
+        internal static string email_max_length {
+            get {
+                return ResourceManager.GetString("email_max_length", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail Teste.
+        /// </summary>
+        internal static string email_test {
+            get {
+                return ResourceManager.GetString("email_test", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail com formato inválido, somente letras (a - z), números (0 - 9) e pontos (.) são permitidos..
+        /// </summary>
+        internal static string invalid_email_format {
+            get {
+                return ResourceManager.GetString("invalid_email_format", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail ou senha inválidos.
+        /// </summary>
+        internal static string invalid_email_or_password {
+            get {
+                return ResourceManager.GetString("invalid_email_or_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Senha.
+        /// </summary>
+        internal static string password {
+            get {
+                return ResourceManager.GetString("password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Senha obrigatória..
+        /// </summary>
+        internal static string password_is_required {
+            get {
+                return ResourceManager.GetString("password_is_required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A senha deve ter no máximo {0} caracteres..
+        /// </summary>
+        internal static string password_max_length {
+            get {
+                return ResourceManager.GetString("password_max_length", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to As senhas não são iguais..
+        /// </summary>
+        internal static string passwords_not_match {
+            get {
+                return ResourceManager.GetString("passwords_not_match", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seu usuário foi desativado. Contate um administrador para verificar o status..
+        /// </summary>
+        internal static string user_disabled {
+            get {
+                return ResourceManager.GetString("user_disabled", resourceCulture);
             }
         }
     }

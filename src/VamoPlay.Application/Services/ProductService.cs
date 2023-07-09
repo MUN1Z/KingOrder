@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using VamoPlay.Application.Comparers;
-using VamoPlay.Application.Shared.Exceptions;
+using VamoPlay.Application.Exceptions;
 using VamoPlay.Application.Filters;
 using VamoPlay.Application.Services.Interfaces;
-using VamoPlay.Application.Shared.ViewModels.Response;
+using VamoPlay.Application.ViewModels.Response;
 using VamoPlay.Domain.Entities;
 using VamoPlay.Domain.Interfaces;
 using VamoPlay.Domain.Interfaces.Repositories;

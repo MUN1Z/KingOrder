@@ -1,4 +1,4 @@
-﻿using VamoPlay.Application.Shared.Exceptions;
+﻿using VamoPlay.Application.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
