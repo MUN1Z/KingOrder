@@ -32,13 +32,13 @@ namespace VamoPlay.CrossCutting.IoC
             var databaseConnectionString = Environment.GetEnvironmentVariable(_connection) ?? configuration.GetConnectionString(_connection);
 
             //SQLSERVER
-            //services.AddDbContext<VamoPlayContext>(
-            //    optionsBuilder => optionsBuilder.UseSqlServer(databaseConnectionString),
-            //    ServiceLifetime.Scoped,
-            //    ServiceLifetime.Singleton);
+            services.AddDbContext<VamoPlayContext>(
+                optionsBuilder => optionsBuilder.UseSqlServer(databaseConnectionString),
+                ServiceLifetime.Scoped,
+                ServiceLifetime.Singleton);
 
             //INMemory
-            services.AddDbContext<VamoPlayContext>(optionsBuilder => optionsBuilder.UseInMemoryDatabase("VamoPlayContext"));
+            //services.AddDbContext<VamoPlayContext>(optionsBuilder => optionsBuilder.UseInMemoryDatabase("VamoPlayContext"));
 
             services.AddScoped<IDatabaseManager, DatabaseManager>();
 
