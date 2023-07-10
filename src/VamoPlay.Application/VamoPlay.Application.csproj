@@ -7,16 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
-    <PackageReference Include="MiniExcel" Version="1.28.0" />
-    <PackageReference Include="org.matheval" Version="1.0.0.2" />
+    <PackageReference Include="MiniExcel" Version="1.31.0" />
+    <PackageReference Include="org.matheval" Version="1.0.0.3" />
     <PackageReference Include="Pipedrive.net" Version="0.5.19" />
-    <PackageReference Include="Quartz" Version="3.5.0" />
+    <PackageReference Include="Quartz" Version="3.6.3" />
     <PackageReference Include="SkiaSharp" Version="2.88.3" />
-    <PackageReference Include="Swashbuckle.AspNetCore.JsonMultipartFormDataSupport" Version="1.7.0" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.15.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.JsonMultipartFormDataSupport" Version="1.8.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.31.0" />
     <PackageReference Include="System.Resources.ResourceManager" Version="4.3.0" />
   </ItemGroup>
 

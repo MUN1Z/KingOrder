@@ -65,7 +65,7 @@ namespace VamoPlay.API
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CISOP.ADMIN.API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "VamoPlay.API", Version = "v1" });
 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
@@ -147,10 +147,6 @@ namespace VamoPlay.API
             {
                 databaseManager.SeedTestData().Wait();
             }
-
-            //databaseManager.SeedResaleConfiguration().Wait();
-            //databaseManager.SeedSupplierConfiguration().Wait();
-            //databaseManager.SeedRenameServices().Wait();
         }
 
         #endregion
