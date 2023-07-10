@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
+using NLog.Web;
+using VamoPlay.API;
 
 public class Program
 {
@@ -17,5 +19,7 @@ public class Program
             {
                 logging.ClearProviders();
                 logging.SetMinimumLevel(LogLevel.Trace);
-            });
+            })
+            .UseNLog();  // NLog: Setup NLog for Dependency injection
 }
+

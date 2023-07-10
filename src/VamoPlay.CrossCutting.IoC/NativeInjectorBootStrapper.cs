@@ -24,7 +24,6 @@ namespace VamoPlay.CrossCutting.IoC
         private const string _service = "Service";
         private const string _repository = "Repository";
         private const string _profille = "Profile";
-        private const string _connection = "DB_CONNECTION_STRING";
 
         #endregion
 
@@ -38,20 +37,12 @@ namespace VamoPlay.CrossCutting.IoC
 
         public static void InjectContext(IServiceCollection services, IConfiguration configuration)
         {
-            var databaseConnectionString = Environment.GetEnvironmentVariable(_connection) ?? configuration.GetConnectionString(_connection);
-
-            //SQLSERVER
+            var databaseConnectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") ?? configuration.GetConnectionString("DB_CONNECTION_STRING");
             services.AddDbContext<VamoPlayContext>(
                 optionsBuilder => optionsBuilder.UseSqlServer(databaseConnectionString),
                 ServiceLifetime.Scoped,
                 ServiceLifetime.Singleton);
-
-            //INMemory
-            //services.AddDbContext<VamoPlayContext>(optionsBuilder => optionsBuilder.UseInMemoryDatabase("VamoPlayContext"));
-
             services.AddScoped<IDatabaseManager, DatabaseManager>();
-
-            InjectIdentity(services, configuration);
         }
 
         public static void InjectIdentity(IServiceCollection services, IConfiguration configuration)
