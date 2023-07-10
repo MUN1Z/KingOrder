@@ -5,15 +5,11 @@ using VamoPlay.Domain.Entities;
 
 namespace VamoPlay.Database.Mappings
 {
-    public class ProductMapping : EntityTypeConfiguration<Product>
+    public class TournamentMapping : EntityTypeConfiguration<Tournament>
     {
-        public override void Map(EntityTypeBuilder<Product> builder)
+        public override void Map(EntityTypeBuilder<Tournament> builder)
         {
             builder.HasKey(c => c.Guid);
-
-            builder.Property(e => e.Gtin)
-               .HasColumnType("varchar(13)")
-               .IsRequired();
 
             builder.Property(e => e.Name)
                .HasColumnType("varchar(255)")
@@ -23,27 +19,35 @@ namespace VamoPlay.Database.Mappings
                .HasColumnType("text")
                .IsRequired();
 
-            builder.Property(e => e.Price)
-               .HasColumnType("decimal")
+            builder.Property(e => e.StartDate)
+               .HasColumnType("datetime2")
                .IsRequired();
 
-            builder.Property(e => e.Discount)
-               .HasColumnType("decimal")
+            builder.Property(e => e.EndDate)
+               .HasColumnType("datetime2")
+               .IsRequired();
+
+            builder.Property(e => e.StartInscriptionDate)
+               .HasColumnType("datetime2")
+               .IsRequired();
+
+            builder.Property(e => e.EndInscriptionDate)
+               .HasColumnType("datetime2")
                .IsRequired();
 
             builder.Property(e => e.Thumb)
                .HasColumnType("text")
                .IsRequired();
 
-            builder.Property(e => e.BarCode)
+            builder.Property(e => e.Banner)
                .HasColumnType("text")
                .IsRequired();
 
-            builder.Property(e => e.Favorite)
+            builder.Property(e => e.IsVisible)
                .HasColumnType("bit")
                .IsRequired();
 
-            builder.ToTable("Product");
+            builder.ToTable("Tournament");
         }
     }
 }

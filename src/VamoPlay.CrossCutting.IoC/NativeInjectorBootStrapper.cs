@@ -11,6 +11,9 @@ using VamoPlay.Database.Seed;
 using Microsoft.AspNetCore.Identity;
 using VamoPlay.CrossCutting.Auth.Entities;
 using VamoPlay.CrossCutting.IoC.Stores;
+using Microsoft.AspNetCore.Authorization;
+using VamoPlay.CrossCutting.Auth.Handlers;
+using VamoPlay.CrossCutting.Auth.Providers;
 
 namespace VamoPlay.CrossCutting.IoC
 {
@@ -26,6 +29,12 @@ namespace VamoPlay.CrossCutting.IoC
         #endregion
 
         #region public methods impplementations
+
+        public static void InjectAuthorization(IServiceCollection services)
+        {
+            services.AddSingleton<IAuthorizationPolicyProvider, AuthorizedPolicyProvider>();
+            services.AddSingleton<IAuthorizationHandler, ClaimsAuthorizationHandler>();
+        }
 
         public static void InjectContext(IServiceCollection services, IConfiguration configuration)
         {

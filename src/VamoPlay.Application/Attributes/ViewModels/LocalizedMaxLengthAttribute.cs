@@ -9,7 +9,7 @@ namespace VamoPlay.Application.Attributes
 
         public LocalizedMaxLengthAttribute(int maxLength, string menssageKey) : base(maxLength)
         {
-            ErrorMessage = CisopResourceManager.GetInstance().GetMessageFromResource(menssageKey, maxLength.ToString());
+            ErrorMessage = VamoPlayResourceManager.GetInstance().GetMessageFromResource(menssageKey, maxLength.ToString());
         }
 
         #endregion

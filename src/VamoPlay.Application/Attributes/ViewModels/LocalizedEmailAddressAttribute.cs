@@ -15,7 +15,7 @@ namespace VamoPlay.Application.Attributes
 
         public LocalizedEmailAddressAttribute(string menssageKey) : base(_emailRegularExpression)
         {
-            ErrorMessage = CisopResourceManager.GetInstance().GetMessageFromResource(menssageKey);
+            ErrorMessage = VamoPlayResourceManager.GetInstance().GetMessageFromResource(menssageKey);
         }
 
         #endregion

@@ -8,15 +8,15 @@ namespace VamoPlay.Application.Services.Interfaces
 {
     public interface IVamoPlayApiService
     {
-        Task<IEnumerable<ProductResponseViewModel>> GetProductsAsync();
-        Task<ProductResponseViewModel> GetProductByGuidAsync(Guid guid);
-        Task<ProductResponseViewModel> GetProductByGuidAsync(string guid);
-        Task<ProductResponseViewModel> CreateProduct(ProductRequestViewModel product);
+        Task<IEnumerable<TournamentResponseViewModel>> GetTournamentsAsync();
+        Task<TournamentResponseViewModel> GetTournamentByGuidAsync(Guid guid);
+        Task<TournamentResponseViewModel> GetTournamentByGuidAsync(string guid);
+        Task<TournamentResponseViewModel> CreateTournament(TournamentRequestViewModel tournament);
 
-        Task<ProductResponseViewModel> FavoriteProduct(Guid guid);
+        Task<TournamentResponseViewModel> FavoriteTournament(Guid guid);
 
-        Task<ProductResponseViewModel> UpdateProduct(Guid guid, ProductRequestViewModel product);
+        Task<TournamentResponseViewModel> UpdateTournament(Guid guid, TournamentRequestViewModel tournament);
 
-        Task<bool> DeleteProduct(Guid guid);
+        Task<bool> DeleteTournament(Guid guid);
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace VamoPlay.Application.Filters
 {
-    public class ProductFilter : PaginationFilter
+    public class TournamentFilter : PaginationFilter
     {
         #region properties
 
@@ -11,13 +11,13 @@
 
         #region constructors
 
-        public ProductFilter() : base()
+        public TournamentFilter() : base()
         {
             Name = null;
             Favorite = null;
         }
 
-        public ProductFilter(string? name = "", bool? favorite = null) : base()
+        public TournamentFilter(string? name = "", bool? favorite = null) : base()
         {
             Name = name;
             Favorite = favorite;

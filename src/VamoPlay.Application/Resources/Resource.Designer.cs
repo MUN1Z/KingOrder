@@ -205,11 +205,65 @@ namespace VamoPlay.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Permissão de usuário obrigatória..
+        /// </summary>
+        internal static string permission_is_required {
+            get {
+                return ResourceManager.GetString("permission_is_required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Seu usuário foi desativado. Contate um administrador para verificar o status..
         /// </summary>
         internal static string user_disabled {
             get {
                 return ResourceManager.GetString("user_disabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Perfil de Usuário.
+        /// </summary>
+        internal static string user_role {
+            get {
+                return ResourceManager.GetString("user_role", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Perfil de usuário já registrado..
+        /// </summary>
+        internal static string user_role_already_registered {
+            get {
+                return ResourceManager.GetString("user_role_already_registered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Perfil de usuário obrigatório..
+        /// </summary>
+        internal static string user_role_is_required {
+            get {
+                return ResourceManager.GetString("user_role_is_required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Perfil de usuário não encontrado.
+        /// </summary>
+        internal static string user_role_not_found {
+            get {
+                return ResourceManager.GetString("user_role_not_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Não é possível remover o perfil pois o mesmo está associado a um ou mais usuários..
+        /// </summary>
+        internal static string user_role_relationship {
+            get {
+                return ResourceManager.GetString("user_role_relationship", resourceCulture);
             }
         }
     }

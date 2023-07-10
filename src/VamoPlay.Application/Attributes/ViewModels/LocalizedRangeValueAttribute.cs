@@ -10,7 +10,7 @@ namespace VamoPlay.Application.Attributes
         public LocalizedRangeValueAttribute(double min, double max, string messageKey)
             : base(min, max)
         {
-            ErrorMessage = CisopResourceManager.GetInstance().GetMessageFromResource(messageKey, min.ToString(), max.ToString());
+            ErrorMessage = VamoPlayResourceManager.GetInstance().GetMessageFromResource(messageKey, min.ToString(), max.ToString());
         }
 
         #endregion

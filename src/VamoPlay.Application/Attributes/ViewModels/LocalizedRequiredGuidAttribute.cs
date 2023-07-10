@@ -11,7 +11,7 @@ namespace VamoPlay.Application.Attributes
         public LocalizedRequiredGuidAttribute(string resourceKey)
             : base()
         {
-            ErrorMessage = CisopResourceManager.GetInstance().GetMessageFromResource(resourceKey);
+            ErrorMessage = VamoPlayResourceManager.GetInstance().GetMessageFromResource(resourceKey);
         }
 
         #endregion

@@ -9,7 +9,7 @@ namespace VamoPlay.Application.Attributes
 
         public LocalizedMinLengthAttribute(int minLength, string menssageKey) : base(minLength)
         {
-            ErrorMessage = CisopResourceManager.GetInstance().GetMessageFromResource(menssageKey, minLength.ToString());
+            ErrorMessage = VamoPlayResourceManager.GetInstance().GetMessageFromResource(menssageKey, minLength.ToString());
         }
 
         #endregion

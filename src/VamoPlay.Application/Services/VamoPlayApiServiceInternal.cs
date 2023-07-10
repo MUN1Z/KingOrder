@@ -25,42 +25,42 @@ namespace VamoPlay.Application.Services
 
         #region Public Methods 
 
-        public async Task<IEnumerable<ProductResponseViewModel>> GetProductsAsync()
+        public async Task<IEnumerable<TournamentResponseViewModel>> GetTournamentsAsync()
         {
-            var requestUri = _url + "/product";
-            return await _httpClient.GetAndDeserialize <IEnumerable<ProductResponseViewModel>> (requestUri);
+            var requestUri = _url + "/tournament";
+            return await _httpClient.GetAndDeserialize <IEnumerable<TournamentResponseViewModel>> (requestUri);
         }
 
-        public async Task<ProductResponseViewModel> GetProductByGuidAsync(Guid guid)
-            => await GetProductByGuidAsync(guid.ToString());
+        public async Task<TournamentResponseViewModel> GetTournamentByGuidAsync(Guid guid)
+            => await GetTournamentByGuidAsync(guid.ToString());
 
-        public async Task<ProductResponseViewModel> GetProductByGuidAsync(string guid)
+        public async Task<TournamentResponseViewModel> GetTournamentByGuidAsync(string guid)
         {
-            var requestUri = _url + $"/product/{guid}";
-            return await _httpClient.GetAndDeserialize<ProductResponseViewModel>(requestUri);
+            var requestUri = _url + $"/tournament/{guid}";
+            return await _httpClient.GetAndDeserialize<TournamentResponseViewModel>(requestUri);
         }
 
-        public async Task<ProductResponseViewModel> CreateProduct(ProductRequestViewModel product)
+        public async Task<TournamentResponseViewModel> CreateTournament(TournamentRequestViewModel tournament)
         {
-            var requestUri = _url + $"/product";
-            return await _httpClient.PostAndDeserialize<ProductResponseViewModel>(requestUri, product);
+            var requestUri = _url + $"/tournament";
+            return await _httpClient.PostAndDeserialize<TournamentResponseViewModel>(requestUri, tournament);
         }
 
-        public async Task<ProductResponseViewModel> FavoriteProduct(Guid guid)
+        public async Task<TournamentResponseViewModel> FavoriteTournament(Guid guid)
         {
-            var requestUri = _url + $"/product/favorite/{guid}";
-            return await _httpClient.PutAndDeserialize<ProductResponseViewModel>(requestUri, null);
+            var requestUri = _url + $"/tournament/favorite/{guid}";
+            return await _httpClient.PutAndDeserialize<TournamentResponseViewModel>(requestUri, null);
         }
 
-        public async Task<ProductResponseViewModel> UpdateProduct(Guid guid, ProductRequestViewModel product)
+        public async Task<TournamentResponseViewModel> UpdateTournament(Guid guid, TournamentRequestViewModel tournament)
         {
-            var requestUri = _url + $"/product/{guid}";
-            return await _httpClient.PutAndDeserialize<ProductResponseViewModel>(requestUri, product);
+            var requestUri = _url + $"/tournament/{guid}";
+            return await _httpClient.PutAndDeserialize<TournamentResponseViewModel>(requestUri, tournament);
         }
 
-        public async Task<bool> DeleteProduct(Guid guid)
+        public async Task<bool> DeleteTournament(Guid guid)
         {
-            var requestUri = _url + $"/product/{guid}";
+            var requestUri = _url + $"/tournament/{guid}";
             return await _httpClient.DeleteAndDeserialize<bool>(requestUri);
         }
 

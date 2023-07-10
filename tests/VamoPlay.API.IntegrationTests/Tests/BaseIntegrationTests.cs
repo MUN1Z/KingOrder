@@ -9,9 +9,9 @@ namespace VamoPlay.API.IntegrationTests.Tests
     {
         #region Protected Members
 
-        protected readonly VamoPlayContext _kingOrderContext;
+        protected readonly VamoPlayContext _vamoPlayContext;
         protected readonly VamoPlayApiWebApplicationFactory _kingOrderFactory;
-        protected readonly HttpClient _kingOrderHttpClient;
+        protected readonly HttpClient _vamoPlayHttpClient;
         protected static object _lock = new object();
 
         #endregion
@@ -23,9 +23,9 @@ namespace VamoPlay.API.IntegrationTests.Tests
             lock (_lock)
             {
                 _kingOrderFactory = VamoPlayApiWebApplicationFactory.GetInstance();
-                _kingOrderHttpClient = _kingOrderFactory.CreateClient();
+                _vamoPlayHttpClient = _kingOrderFactory.CreateClient();
                 var serviceScope = _kingOrderFactory.Services.GetService<IServiceScopeFactory>().CreateScope();
-                _kingOrderContext = serviceScope?.ServiceProvider.GetService<VamoPlayContext>();
+                _vamoPlayContext = serviceScope?.ServiceProvider.GetService<VamoPlayContext>();
             }
         }
 
@@ -47,24 +47,22 @@ namespace VamoPlay.API.IntegrationTests.Tests
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
-        protected async Task<Product> CreateProduct()
+        protected async Task<Tournament> CreateTournament()
         {
-            var product = new Product
+            var tournament = new Tournament
             {
                 Guid = Guid.NewGuid(),
                 CreatedAt = DateTime.Now,
                 UpdatedAt = DateTime.Now,
-                Gtin = GenerateRandomString(13, true),
                 Name = GenerateRandomString(10),
                 Description = GenerateRandomString(10),
-                BarCode = GenerateRandomString(255),
                 Thumb = GenerateRandomString(255)
             };
 
-            await _kingOrderContext.Product.AddAsync(product);
-            await _kingOrderContext.SaveChangesAsync();
+            await _vamoPlayContext.Tournament.AddAsync(tournament);
+            await _vamoPlayContext.SaveChangesAsync();
 
-            return product;
+            return tournament;
         }
 
         #endregion

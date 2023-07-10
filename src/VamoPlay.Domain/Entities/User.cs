@@ -13,5 +13,9 @@
         public bool IsDeleted { get; set; }
 
         public DateTime? LastAccess { get; set; }
+
+        public Guid UserRoleGuid { get; set; }
+
+        public virtual UserRole UserRole { get; set; }
     }
 }

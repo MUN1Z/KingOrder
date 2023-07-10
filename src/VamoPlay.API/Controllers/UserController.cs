@@ -2,6 +2,10 @@ using VamoPlay.Application.Services.Interfaces;
 using VamoPlay.Application.ViewModels.Response;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using VamoPlay.Application.Filters;
+using VamoPlay.Application.Services;
+using VamoPlay.CrossCutting.Auth.Attributes;
+using VamoPlay.Domain.Enums;
 
 namespace VamoPlay.API.Controllers
 {
@@ -25,6 +29,11 @@ namespace VamoPlay.API.Controllers
         #endregion
 
         #region Public Methods
+
+        [HttpGet(Name = "GetAllUsers")]
+        [Authorized(UserClaim.UserRoles_Read)]
+        public async Task<IActionResult> GetAllUsers()
+           => NoContent();
 
         [HttpPost("New")]
         [AllowAnonymous]

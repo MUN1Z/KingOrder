@@ -2,6 +2,8 @@
 {
     public interface IDatabaseManager
     {
-        Task SeedData();
+        Task SeedTestData();
+
+        Task SeedSuperAdmin();
     }
 }

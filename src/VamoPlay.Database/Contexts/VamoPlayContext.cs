@@ -11,8 +11,10 @@ namespace VamoPlay.Database.Contexts
 {
     public class VamoPlayContext : IdentityDbContext<UserIdentity, IdentityRole, string>
     {
-        public DbSet<Product> Product { get; set; }
-        public DbSet<User> UserAccount { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<UserRole> UserRole { get; set; }
+        public DbSet<Tournament> Tournament { get; set; }
+        public DbSet<TournamentCategory> TournamentCategory { get; set; }
 
         public VamoPlayContext(DbContextOptions<VamoPlayContext> options) : base(options)
         {
@@ -26,8 +28,10 @@ namespace VamoPlay.Database.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.AddConfiguration(new ProductMapping());
             modelBuilder.AddConfiguration(new UserMapping());
+            modelBuilder.AddConfiguration(new UserRoleMapping());
+            modelBuilder.AddConfiguration(new TournamentMapping());
+            modelBuilder.AddConfiguration(new TournamentCategoryMapping());
 
             base.OnModelCreating(modelBuilder);
         }

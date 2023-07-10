@@ -9,14 +9,14 @@ namespace VamoPlay.Application.ViewModels.Response
     [Serializable]
     public class LogInRequestViewModel : IViewModel
     {
-        [LocalizedRequired(CisopResourceManager.EmailIsRequired)]
-        [LocalizedEmailAddress(CisopResourceManager.InvalidEmailFormat)]
-        [LocalizedMaxLength(RequestConstants.Length255, CisopResourceManager.EmailMaxLength)]
+        [LocalizedRequired(VamoPlayResourceManager.EmailIsRequired)]
+        [LocalizedEmailAddress(VamoPlayResourceManager.InvalidEmailFormat)]
+        [LocalizedMaxLength(RequestConstants.Length255, VamoPlayResourceManager.EmailMaxLength)]
         public string Email { get; set; }
 
         [DataType(DataType.Password)]
-        [LocalizedRequired(CisopResourceManager.PasswordIsRequired)]
-        [LocalizedMaxLength(RequestConstants.Length255, CisopResourceManager.PasswordMaxLength)]
+        [LocalizedRequired(VamoPlayResourceManager.PasswordIsRequired)]
+        [LocalizedMaxLength(RequestConstants.Length255, VamoPlayResourceManager.PasswordMaxLength)]
         public string Password { get; set; }
     }
 }

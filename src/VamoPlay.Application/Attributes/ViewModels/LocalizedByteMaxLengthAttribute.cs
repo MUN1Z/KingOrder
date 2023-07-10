@@ -18,7 +18,7 @@ namespace VamoPlay.Application.Attributes
         public LocalizedByteMaxSizeAttribute(int maxLength, string menssageKey) : base (maxLength * _byteSize * _byteSize)
         {
             _maxLength = maxLength * _byteSize * _byteSize;
-            ErrorMessage = CisopResourceManager.GetInstance().GetMessageFromResource(menssageKey, maxLength.ToString());
+            ErrorMessage = VamoPlayResourceManager.GetInstance().GetMessageFromResource(menssageKey, maxLength.ToString());
         }
 
         public override bool IsValid(object value)
