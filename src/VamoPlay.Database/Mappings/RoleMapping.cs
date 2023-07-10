@@ -9,9 +9,9 @@ using VamoPLay.Infra.Database.Converters;
 
 namespace VamoPlay.Database.Mappings
 {
-    public class UserRoleMapping : EntityTypeConfiguration<UserRole>
+    public class RoleMapping : EntityTypeConfiguration<Role>
     {
-        public override void Map(EntityTypeBuilder<UserRole> builder)
+        public override void Map(EntityTypeBuilder<Role> builder)
         {
             builder.HasKey(c => c.Guid);
 
@@ -22,8 +22,8 @@ namespace VamoPlay.Database.Mappings
             builder.Property(e => e.Description)
                .HasColumnType("varchar(1000)");
 
-            var converter = new EnumCollectionJsonValueConverter<UserClaim>();
-            var comparer = new CollectionValueComparer<UserClaim>();
+            var converter = new EnumCollectionJsonValueConverter<ClaimType>();
+            var comparer = new CollectionValueComparer<ClaimType>();
 
             builder.Property(e => e.UserPermissions)
                 .HasConversion(converter)
@@ -31,7 +31,7 @@ namespace VamoPlay.Database.Mappings
 
             builder.HasQueryFilter(r => r.Name != AuthenticationConstants.SuperAdministratorRoleName);
 
-            builder.ToTable("UserRole");
+            builder.ToTable("Role");
         }
     }
 }

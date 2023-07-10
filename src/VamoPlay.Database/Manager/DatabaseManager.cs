@@ -42,36 +42,38 @@ namespace VamoPlay.Database.Seed
 
         public async Task SeedSuperAdmin()
         {
-            if (!_context.UserRole.IgnoreQueryFilters().Any(ur => ur.Name.Equals(AuthenticationConstants.SuperAdministratorRoleName)))
+            if (!_context.Role.IgnoreQueryFilters().Any(ur => ur.Name.Equals(AuthenticationConstants.SuperAdministratorRoleName)))
             {
-                var adminRole = new UserRole()
+                var adminRole = new Role()
                 {
                     Guid = Guid.NewGuid(),
                     Name = AuthenticationConstants.SuperAdministratorRoleName,
                     Description = AuthenticationConstants.SuperAdministratorRoleName,
                     CreatedAt = DateTime.UtcNow,
                     UpdatedAt = DateTime.UtcNow,
-                    UserPermissions = new List<UserClaim>()
+                    UserPermissions = new List<ClaimType>()
                 };
 
-                await _context.UserRole.AddAsync(adminRole);
+                await _context.Role.AddAsync(adminRole);
                 await _context.SaveChangesAsync();
 
-                if (!_context.User.IgnoreQueryFilters().Any(ua => ua.UserRoleGuid.Equals(adminRole.Guid)))
+                if (!_context.User.IgnoreQueryFilters().Include(c => c.Roles).Any(ua => ua.Roles.Any(c => c.Guid == adminRole.Guid)))
                 {
                     var admin = new User
                     {
                         Name = "Admin",
                         Email = "admin@mail.com",
                         Password = "123456",
-                        UserRoleGuid = adminRole.Guid,
                         IsActive = true,
                         CreatedAt = DateTime.UtcNow,
                         UpdatedAt = DateTime.UtcNow,
+                        Roles = new List<Role> { adminRole }
                     };
 
                     await RegisterUserAsync(admin);
                 }
+
+                var user = await _context.User.Include(c => c.Roles).SingleOrDefaultAsync();
             }
         }
 

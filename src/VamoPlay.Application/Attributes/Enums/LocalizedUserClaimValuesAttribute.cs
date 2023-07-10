@@ -7,7 +7,7 @@ namespace VamoPlay.Application.Attributes
     {
         #region properties
 
-        public UserClaim Key { get; set; }
+        public ClaimType Key { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Module { get; set; }

@@ -34,8 +34,7 @@ namespace VamoPlay.Database.Mappings
             builder.Property(e => e.LastAccess)
                .HasColumnType("datetime2");
 
-            builder.HasOne(e => e.UserRole).WithMany(c => c.Users)
-                .HasForeignKey(c => c.UserRoleGuid);
+            builder.HasMany(e => e.Roles).WithMany(c => c.Users).UsingEntity(c => c.ToTable("User_Role"));
 
             // Globally apply the filter in all queries.
             builder.HasQueryFilter(e => !e.IsDeleted);

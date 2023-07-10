@@ -3,7 +3,7 @@ using VamoPlay.Application.Resources;
 
 namespace VamoPlay.Application.Enums
 {
-    public enum UserClaim
+    public enum ClaimType
     {
         [LocalizedUserClaimValues(name: VamoPlayResourceManager.List, description: VamoPlayResourceManager.ListRecords, module: VamoPlayResourceManager.User)]
         Users_Read,
@@ -15,18 +15,14 @@ namespace VamoPlay.Application.Enums
         Users_Delete,
         [LocalizedUserClaimValues(name: VamoPlayResourceManager.ActivateDeactivate, description: VamoPlayResourceManager.ActivateDeactivateRecords, module: VamoPlayResourceManager.User)]
         Users_ActivateDeactivate,
-        [LocalizedUserClaimValues(name: VamoPlayResourceManager.List, description: VamoPlayResourceManager.ListRecords, module: VamoPlayResourceManager.EmailConfiguration)]
-        EmailConfig_Read,
-        [LocalizedUserClaimValues(name: VamoPlayResourceManager.Edit, description: VamoPlayResourceManager.EditRecords, module: VamoPlayResourceManager.EmailConfiguration)]
-        EmailConfig_Write,
-        [LocalizedUserClaimValues(name: VamoPlayResourceManager.List, description: VamoPlayResourceManager.ListRecords, module: VamoPlayResourceManager.UserRole)]
-        UserRoles_Read,
-        [LocalizedUserClaimValues(name: VamoPlayResourceManager.Edit, description: VamoPlayResourceManager.EditRecords, module: VamoPlayResourceManager.UserRole)]
-        UserRoles_Write,
-        [LocalizedUserClaimValues(name: VamoPlayResourceManager.Register, description: VamoPlayResourceManager.RegisterRecords, module: VamoPlayResourceManager.UserRole)]
-        UserRoles_Create,
-        [LocalizedUserClaimValues(name: VamoPlayResourceManager.Remove, description: VamoPlayResourceManager.RemoveRecords, module: VamoPlayResourceManager.UserRole)]
-        UserRoles_Delete,
+        [LocalizedUserClaimValues(name: VamoPlayResourceManager.List, description: VamoPlayResourceManager.ListRecords, module: VamoPlayResourceManager.Role)]
+        Roles_Read,
+        [LocalizedUserClaimValues(name: VamoPlayResourceManager.Edit, description: VamoPlayResourceManager.EditRecords, module: VamoPlayResourceManager.Role)]
+        Roles_Write,
+        [LocalizedUserClaimValues(name: VamoPlayResourceManager.Register, description: VamoPlayResourceManager.RegisterRecords, module: VamoPlayResourceManager.Role)]
+        Roles_Create,
+        [LocalizedUserClaimValues(name: VamoPlayResourceManager.Remove, description: VamoPlayResourceManager.RemoveRecords, module: VamoPlayResourceManager.Role)]
+        Roles_Delete,
         [LocalizedUserClaimValues(name: VamoPlayResourceManager.List, description: VamoPlayResourceManager.ListRecords, module: VamoPlayResourceManager.Tournament)]
         Tournament_Read,
         [LocalizedUserClaimValues(name: VamoPlayResourceManager.Edit, description: VamoPlayResourceManager.EditRecords, module: VamoPlayResourceManager.Tournament)]

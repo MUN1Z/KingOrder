@@ -7,7 +7,7 @@ using VamoPlay.Application.ViewModels;
 namespace VamoPlay.Application.ViewModels
 {
     [Serializable]
-    public class UserRoleRequestViewModel : IViewModel
+    public class RoleRequestViewModel : IViewModel
     {
         [LocalizedRequired(VamoPlayResourceManager.NameIsRequired)]
         [LocalizedMaxLength(RequestConstants.Length255, VamoPlayResourceManager.NameMaxLength)]
@@ -21,6 +21,6 @@ namespace VamoPlay.Application.ViewModels
         public DateTime UpdatedAt { get; set; }
 
         [LocalizedRequired(VamoPlayResourceManager.PermissionIsRequired)]
-        public ICollection<UserClaim> UserPermissions { get; set; }
+        public ICollection<ClaimType> UserPermissions { get; set; }
     }
 }

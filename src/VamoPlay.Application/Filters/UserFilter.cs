@@ -1,6 +1,6 @@
 ﻿namespace VamoPlay.Application.Filters
 {
-    public class UserRoleFilter : PaginationFilter
+    public class UserFilter : PaginationFilter
     {
         #region properties
 
@@ -10,12 +10,12 @@
 
         #region constructors
 
-        public UserRoleFilter() : base()
+        public UserFilter() : base()
         {
             Name = string.Empty;
         }
 
-        public UserRoleFilter(int pageNumber, int pageSize, string name = "") : base()
+        public UserFilter(int pageNumber, int pageSize, string name = "") : base()
         {
             PageNumber = pageNumber;
             PageSize = pageSize;

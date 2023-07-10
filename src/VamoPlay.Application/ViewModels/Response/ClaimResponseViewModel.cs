@@ -3,7 +3,7 @@
 namespace VamoPlay.Application.ViewModels
 {
     [Serializable]
-    public class UserClaimResponseViewModel : IViewModel
+    public class ClaimResponseViewModel : IViewModel
     {
         public string Module { get; set; }
 
@@ -13,7 +13,7 @@ namespace VamoPlay.Application.ViewModels
     [Serializable]
     public class UserPermissionResponseViewModel : IViewModel
     {
-        public UserClaim Key { get; set; }
+        public ClaimType Key { get; set; }
 
         public string Name { get; set; }
 

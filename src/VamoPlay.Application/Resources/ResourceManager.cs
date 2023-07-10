@@ -38,8 +38,7 @@ namespace VamoPlay.Application.Resources
         public const string ActivateDeactivateRecords = "activate_deactivate_records";
 
         public const string User = "user";
-        public const string UserRole = "user_role";
-        public const string EmailConfiguration = "email_configuration";
+        public const string Role = "user_role";
         public const string Tournament = "tournament";
         public const string TournamentCategory = "tournament_category";
 

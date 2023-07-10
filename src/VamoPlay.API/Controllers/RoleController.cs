@@ -11,43 +11,43 @@ namespace VamoPlay.API.Controllers
     [ApiController]
     [Route("api/[Controller]")]
     [Authorize]
-    public class UserRoleController : BaseController
+    public class RoleController : BaseController
     {
         #region private members
 
-        private readonly IUserRoleService _userRoleService;
+        private readonly IRoleService _roleService;
 
         #endregion private members
 
         #region constructors
 
-        public UserRoleController(IUserRoleService userRoleService)
+        public RoleController(IRoleService roleService)
         {
-            _userRoleService = userRoleService;
+            _roleService = roleService;
         }
 
         #endregion constructors
 
         #region public methods implementations
 
-        [HttpGet(Name = "GetAllUserRoles")]
-        [Authorized(UserClaim.UserRoles_Read)]
-        public async Task<IActionResult> GetAllUserRoles([FromQuery] UserRoleFilter filter)
-            => Response(await _userRoleService.GetAll(filter));
+        [HttpGet(Name = "GetAllRoles")]
+        [Authorized(ClaimType.Roles_Read)]
+        public async Task<IActionResult> GetAllRoles([FromQuery] RoleFilter filter)
+            => Response(await _roleService.GetAll(filter));
 
         [HttpGet("{guid}")]
-        [Authorized(UserClaim.UserRoles_Read)]
+        [Authorized(ClaimType.Roles_Read)]
         public async Task<IActionResult> GetByGuid([FromRoute] Guid guid)
         {
-            var result = await _userRoleService.GetByGuid(guid);
+            var result = await _roleService.GetByGuid(guid);
             return Response(result);
         }
 
         [HttpPost("New")]
-        [Authorized(UserClaim.UserRoles_Create)]
-        public async Task<IActionResult> NewUseRole([FromBody] UserRoleRequestViewModel userRole)
+        [Authorized(ClaimType.Roles_Create)]
+        public async Task<IActionResult> NewUseRole([FromBody] RoleRequestViewModel role)
         {
-            var result = await _userRoleService.RegisterAsync(userRole);
+            var result = await _roleService.RegisterAsync(role);
 
             if (result != null)
                 return Response(result);
@@ -56,10 +56,10 @@ namespace VamoPlay.API.Controllers
         }
 
         [HttpPut("{guid}")]
-        [Authorized(UserClaim.UserRoles_Write)]
-        public async Task<IActionResult> Update([FromRoute] Guid guid, [FromBody] UserRoleRequestViewModel userRole)
+        [Authorized(ClaimType.Roles_Write)]
+        public async Task<IActionResult> Update([FromRoute] Guid guid, [FromBody] RoleRequestViewModel role)
         {
-            var result = await _userRoleService.Update(guid, userRole);
+            var result = await _roleService.Update(guid, role);
 
             if (result != null)
                 return Response(result);
@@ -68,14 +68,14 @@ namespace VamoPlay.API.Controllers
         }
 
         [HttpGet("Permissions")]
-        [Authorized(UserClaim.UserRoles_Read)]
-        public IActionResult GetAllUserClaims() => Response(_userRoleService.GetAllUserClaims());
+        [Authorized(ClaimType.Roles_Read)]
+        public IActionResult GetAllUserClaims() => Response(_roleService.GetAllUserClaims());
 
         [HttpDelete("{guid}")]
-        [Authorized(UserClaim.UserRoles_Delete)]
+        [Authorized(ClaimType.Roles_Delete)]
         public async Task<IActionResult> RemoveByGuid([FromRoute] Guid guid)
         {
-            await _userRoleService.RemoveByGuid(guid);
+            await _roleService.RemoveByGuid(guid);
             return NoContent();
         }
 

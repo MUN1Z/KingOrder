@@ -3,7 +3,7 @@
 namespace VamoPlay.Application.ViewModels
 {
     [Serializable]
-    public class UserRoleResponseViewModel : IViewModel
+    public class RoleResponseViewModel : IViewModel
     {
         public Guid Guid { get; set; }
 
@@ -15,6 +15,6 @@ namespace VamoPlay.Application.ViewModels
 
         public DateTime UpdatedAt { get; set; }
 
-        public ICollection<UserClaim> UserPermissions { get; set; }
+        public ICollection<ClaimType> UserPermissions { get; set; }
     }
 }

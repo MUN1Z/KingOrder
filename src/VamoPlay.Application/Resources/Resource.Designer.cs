@@ -61,6 +61,78 @@ namespace VamoPlay.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ativar / Desativar.
+        /// </summary>
+        internal static string activate_deactivate {
+            get {
+                return ResourceManager.GetString("activate_deactivate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ativar / Desativar Registros.
+        /// </summary>
+        internal static string activate_deactivate_records {
+            get {
+                return ResourceManager.GetString("activate_deactivate_records", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clonar.
+        /// </summary>
+        internal static string clone {
+            get {
+                return ResourceManager.GetString("clone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clonar Registros.
+        /// </summary>
+        internal static string clone_records {
+            get {
+                return ResourceManager.GetString("clone_records", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desativar.
+        /// </summary>
+        internal static string deactivate {
+            get {
+                return ResourceManager.GetString("deactivate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desativar Registros.
+        /// </summary>
+        internal static string deactivate_records {
+            get {
+                return ResourceManager.GetString("deactivate_records", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editar.
+        /// </summary>
+        internal static string edit {
+            get {
+                return ResourceManager.GetString("edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editar Registros.
+        /// </summary>
+        internal static string edit_records {
+            get {
+                return ResourceManager.GetString("edit_records", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E-mail.
         /// </summary>
         internal static string email {
@@ -169,6 +241,24 @@ namespace VamoPlay.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Listar.
+        /// </summary>
+        internal static string list {
+            get {
+                return ResourceManager.GetString("list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Listar Registros.
+        /// </summary>
+        internal static string list_records {
+            get {
+                return ResourceManager.GetString("list_records", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Senha.
         /// </summary>
         internal static string password {
@@ -210,6 +300,96 @@ namespace VamoPlay.Application.Resources {
         internal static string permission_is_required {
             get {
                 return ResourceManager.GetString("permission_is_required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ranking.
+        /// </summary>
+        internal static string ranking {
+            get {
+                return ResourceManager.GetString("ranking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visualizar.
+        /// </summary>
+        internal static string read {
+            get {
+                return ResourceManager.GetString("read", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visualizar Registros.
+        /// </summary>
+        internal static string read_records {
+            get {
+                return ResourceManager.GetString("read_records", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cadastrar.
+        /// </summary>
+        internal static string register {
+            get {
+                return ResourceManager.GetString("register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cadastrar Registros.
+        /// </summary>
+        internal static string register_records {
+            get {
+                return ResourceManager.GetString("register_records", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remover.
+        /// </summary>
+        internal static string remove {
+            get {
+                return ResourceManager.GetString("remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remover Registros.
+        /// </summary>
+        internal static string remove_records {
+            get {
+                return ResourceManager.GetString("remove_records", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Torneio.
+        /// </summary>
+        internal static string tournament {
+            get {
+                return ResourceManager.GetString("tournament", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Catégoria.
+        /// </summary>
+        internal static string tournament_category {
+            get {
+                return ResourceManager.GetString("tournament_category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usuário.
+        /// </summary>
+        internal static string user {
+            get {
+                return ResourceManager.GetString("user", resourceCulture);
             }
         }
         

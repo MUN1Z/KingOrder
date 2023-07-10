@@ -4,11 +4,11 @@ using VamoPlay.Database.Contexts;
 
 namespace VamoPlay.Database.Repositories
 {
-    public class UserRoleRepository : BaseRepository<UserRole>, IUserRoleRepository
+    public class RoleRepository : BaseRepository<Role>, IRoleRepository
     {
         #region constructors
 
-        public UserRoleRepository(VamoPlayContext context) : base(context)
+        public RoleRepository(VamoPlayContext context) : base(context)
         {
         }
 

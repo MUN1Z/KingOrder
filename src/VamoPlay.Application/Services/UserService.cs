@@ -12,8 +12,12 @@ using VamoPlay.Application.ViewModels.Response;
 using VamoPlay.CrossCutting.Auth.Constants;
 using VamoPlay.CrossCutting.Auth.Entities;
 using VamoPlay.Domain.Entities;
+using ClaimType = VamoPlay.Domain.Enums.ClaimType;
 using VamoPlay.Domain.Interfaces;
 using VamoPlay.Domain.Interfaces.Repositories;
+using VamoPlay.Application.ViewModels;
+using VamoPlay.Application.Filters;
+using System.Linq.Expressions;
 
 namespace VamoPlay.Application.Services
 {
@@ -22,6 +26,8 @@ namespace VamoPlay.Application.Services
         #region private members
 
         private readonly IUserRepository _userRepository;
+
+        private readonly IRoleRepository _roleRepository;
 
         private readonly IConfiguration _configuration;
 
@@ -35,6 +41,7 @@ namespace VamoPlay.Application.Services
 
         public UserService(
             IUserRepository userRepository,
+            IRoleRepository roleRepository,
             IUnitOfWork work,
             IMapper mapper,
             IConfiguration configuration,
@@ -42,6 +49,7 @@ namespace VamoPlay.Application.Services
             SignInManager<UserIdentity> signInManager) : base(work, mapper)
         {
             _userRepository = userRepository;
+            _roleRepository = roleRepository;
             _userManager = userManager;
             _signInManager = signInManager;
             _configuration = configuration;
@@ -52,11 +60,31 @@ namespace VamoPlay.Application.Services
 
         #region public methods implementations
 
+        public async Task<BasePagedResponseViewModel<IEnumerable<UserResponseViewModel>>> GetAll(UserFilter filter)
+        {
+            filter.Validate();
+
+            var (users, totalCount) = await _userRepository.FindAllWithoutAdmin(filter, orderBy: u => u.Name,
+                includeProperties: new Expression<Func<User, object>>[]
+                {
+                    c => c.Roles,
+                });
+
+            var usersData = _mapper.Map<IEnumerable<UserResponseViewModel>>(users);
+
+            return new BasePagedResponseViewModel<IEnumerable<UserResponseViewModel>>(usersData, filter.PageNumber, filter.PageSize, totalCount);
+        }
+
+        public async Task<IEnumerable<SelectDataResponseViewModel>> GetAllUserRoles()
+        {
+            var roles = await _roleRepository.GetAllAsync(orderBy: r => r.Name);
+            return _mapper.Map<IEnumerable<SelectDataResponseViewModel>>(roles);
+        }
 
         public async Task<LoginResponseViewModel> LoginAsync(LogInRequestViewModel loginViewModel)
         {
             //var userDb = await _userRepository.GetByEmailAsync(loginViewModel.Email, true);
-            var userDb = await _userRepository.FindByAsync(c => c.Email.Equals(loginViewModel.Email));
+            var userDb = await _userRepository.FindWithRoles(loginViewModel.Email);
 
             var user = await _userManager.FindByNameAsync(loginViewModel.Email);
 
@@ -99,9 +127,9 @@ namespace VamoPlay.Application.Services
             //var userPassword = GenerateRandomPassword();
             user.Password = BCrypt.Net.BCrypt.HashPassword(userViewModel.Password);
 
-            //var userRole = await _userRoleRepository.GetByIdAsync(userViewModel.UserRoleGuid);
+            //var role = await _roleRepository.GetByIdAsync(userViewModel.RoleGuid);
 
-            //if (userRole == null)
+            //if (role == null)
             //    throw new VamoPlayNotFoundException(Resources.Resource.user_role_not_found);
 
             var newUser = await _userRepository.AddAsync(user);
@@ -122,6 +150,22 @@ namespace VamoPlay.Application.Services
             Commit();
 
             return _mapper.Map<UserResponseViewModel>(newUser);
+        }
+
+        public async Task<User> GetUserLoggedIn()
+        {
+            var currentUserId = GetIdCurrentUser();
+
+            if (currentUserId == null)
+            {
+                throw new VamoPlayUnauthorizedException("cannot_found_logged_user");
+            }
+            var user = await _userRepository.FindByAsync(c => c.Guid == new Guid(currentUserId),
+                includeProperties: new Expression<Func<User, object>>[]
+                {
+                    ua => ua.Roles,
+                });
+            return user;
         }
 
         #endregion public methods implementations
@@ -151,7 +195,7 @@ namespace VamoPlay.Application.Services
                     new Claim(ClaimTypes.Email, userDb.Email),
             };
 
-            //claims.Add(new Claim(ClaimTypes.Role, userDb.UserRole.Name));
+            //claims.Add(new Claim(ClaimTypes.Role, userDb.Role.Name));
             //claims.Add(new Claim(AuthenticationConstants.JWT_USER_TYPE_PROPERTY,
             //    Convert.ToInt32(userDb.UserAccountType).ToString(), ClaimValueTypes.Integer));
             //claims.Add(new Claim(AuthenticationConstants.JWT_USER_BUY_FROM_SUPPLIER_PROPERTY,
@@ -159,14 +203,27 @@ namespace VamoPlay.Application.Services
             //        ? userDb.Resale.BuyFromSupplier.ToString()
             //        : false.ToString(), ClaimValueTypes.Boolean));
 
-            //if (userDb.UserRole.Name == AuthenticationConstants.SuperAdministratorRoleName)
+            //if (userDb.Role.Name == AuthenticationConstants.SuperAdministratorRoleName)
             //{
             //    foreach (var permission in ((UserClaim[])Enum.GetValues(typeof(UserClaim))).ToList())
             //        claims.Add(new Claim(AuthenticationConstants.JWT_CLAIMS_PROPERTY, permission.ToString()));
             //}
             //else
-            //    foreach (var permission in userDb.UserRole.UserPermissions)
+            //    foreach (var permission in userDb.Role.UserPermissions)
             //        claims.Add(new Claim(AuthenticationConstants.JWT_CLAIMS_PROPERTY, permission.ToString()));
+
+            foreach (var role in userDb.Roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role.Name));
+                if (role.Name == AuthenticationConstants.SuperAdministratorRoleName)
+                {
+                    foreach (var permission in ((ClaimType[])Enum.GetValues(typeof(ClaimType))).ToList())
+                        claims.Add(new Claim(AuthenticationConstants.JWT_CLAIMS_PROPERTY, permission.ToString()));
+                }
+                else
+                    foreach (var permission in role.UserPermissions)
+                        claims.Add(new Claim(AuthenticationConstants.JWT_CLAIMS_PROPERTY, permission.ToString()));
+            }
 
             var securityTokenDescriptor = new SecurityTokenDescriptor
             {

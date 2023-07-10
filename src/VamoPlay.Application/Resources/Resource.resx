@@ -117,6 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="activate_deactivate" xml:space="preserve">
+    <value>Ativar / Desativar</value>
+  </data>
+  <data name="activate_deactivate_records" xml:space="preserve">
+    <value>Ativar / Desativar Registros</value>
+  </data>
+  <data name="clone" xml:space="preserve">
+    <value>Clonar</value>
+  </data>
+  <data name="clone_records" xml:space="preserve">
+    <value>Clonar Registros</value>
+  </data>
+  <data name="deactivate" xml:space="preserve">
+    <value>Desativar</value>
+  </data>
+  <data name="deactivate_records" xml:space="preserve">
+    <value>Desativar Registros</value>
+  </data>
+  <data name="edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="edit_records" xml:space="preserve">
+    <value>Editar Registros</value>
+  </data>
   <data name="email" xml:space="preserve">
     <value>E-mail</value>
   </data>
@@ -153,6 +177,12 @@
   <data name="invalid_email_or_password" xml:space="preserve">
     <value>E-mail ou senha inválidos</value>
   </data>
+  <data name="list" xml:space="preserve">
+    <value>Listar</value>
+  </data>
+  <data name="list_records" xml:space="preserve">
+    <value>Listar Registros</value>
+  </data>
   <data name="password" xml:space="preserve">
     <value>Senha</value>
   </data>
@@ -167,6 +197,36 @@
   </data>
   <data name="permission_is_required" xml:space="preserve">
     <value>Permissão de usuário obrigatória.</value>
+  </data>
+  <data name="ranking" xml:space="preserve">
+    <value>Ranking</value>
+  </data>
+  <data name="read" xml:space="preserve">
+    <value>Visualizar</value>
+  </data>
+  <data name="read_records" xml:space="preserve">
+    <value>Visualizar Registros</value>
+  </data>
+  <data name="register" xml:space="preserve">
+    <value>Cadastrar</value>
+  </data>
+  <data name="register_records" xml:space="preserve">
+    <value>Cadastrar Registros</value>
+  </data>
+  <data name="remove" xml:space="preserve">
+    <value>Remover</value>
+  </data>
+  <data name="remove_records" xml:space="preserve">
+    <value>Remover Registros</value>
+  </data>
+  <data name="tournament" xml:space="preserve">
+    <value>Torneio</value>
+  </data>
+  <data name="tournament_category" xml:space="preserve">
+    <value>Catégoria</value>
+  </data>
+  <data name="user" xml:space="preserve">
+    <value>Usuário</value>
   </data>
   <data name="user_disabled" xml:space="preserve">
     <value>Seu usuário foi desativado. Contate um administrador para verificar o status.</value>

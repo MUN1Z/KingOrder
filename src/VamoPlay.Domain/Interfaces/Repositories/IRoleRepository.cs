@@ -2,7 +2,7 @@
 
 namespace VamoPlay.Domain.Interfaces.Repositories
 {
-    public interface IUserRoleRepository : IBaseRepository<UserRole>
+    public interface IRoleRepository : IBaseRepository<Role>
     {
     }
 }

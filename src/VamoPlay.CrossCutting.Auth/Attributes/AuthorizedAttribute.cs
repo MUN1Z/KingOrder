@@ -6,22 +6,22 @@ namespace VamoPlay.CrossCutting.Auth.Attributes
     {
         public const string ClaimsGroup = "Claims";
 
-        private UserClaim[] _claims;
+        private ClaimType[] _claims;
 
         private bool _isDefault = true;
 
         public AuthorizedAttribute()
         {
-            _claims = Array.Empty<UserClaim>();
+            _claims = Array.Empty<ClaimType>();
         }
 
-        public AuthorizedAttribute(params UserClaim[] userClaims)
+        public AuthorizedAttribute(params ClaimType[] userClaims)
         {
-            _claims = Array.Empty<UserClaim>();
+            _claims = Array.Empty<ClaimType>();
             UserClaims = userClaims;
         }
 
-        public UserClaim[] UserClaims
+        public ClaimType[] UserClaims
         {
             get => _claims;
             set

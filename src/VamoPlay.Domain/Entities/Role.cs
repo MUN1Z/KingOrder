@@ -2,12 +2,12 @@
 
 namespace VamoPlay.Domain.Entities
 {
-    public class UserRole : BaseEntity
+    public class Role : BaseEntity
     {
-        public UserRole() : base()
+        public Role() : base()
         {
             Users = new List<User>();
-            UserPermissions = new List<UserClaim>();
+            UserPermissions = new List<ClaimType>();
         }
 
         public string Name { get; set; }
@@ -15,6 +15,6 @@ namespace VamoPlay.Domain.Entities
         public string? Description { get; set; }
 
         public virtual ICollection<User> Users { get; set; }
-        public virtual ICollection<UserClaim> UserPermissions { get; set; }
+        public virtual ICollection<ClaimType> UserPermissions { get; set; }
     }
 }

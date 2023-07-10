@@ -2,6 +2,11 @@
 {
     public class User : BaseEntity
     {
+        public User()
+        {
+            Roles = new List<Role>();
+        }
+
         public string Name { get; set; }
 
         public string Email { get; set; }
@@ -14,8 +19,10 @@
 
         public DateTime? LastAccess { get; set; }
 
-        public Guid UserRoleGuid { get; set; }
+        //public Guid RoleGuid { get; set; }
 
-        public virtual UserRole UserRole { get; set; }
+        //public virtual Role Role { get; set; }
+
+        public virtual ICollection<Role> Roles { get; set; }
     }
 }

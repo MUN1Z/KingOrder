@@ -15,7 +15,7 @@ namespace VamoPlay.Application.Extensions
             return enumType.GetField(name).GetCustomAttributes(false).OfType<TAttribute>().SingleOrDefault();
         }
 
-        public static LocalizedUserClaimValuesAttribute GetUserClaimValuesAttribute(this UserClaim value)
+        public static LocalizedUserClaimValuesAttribute GetUserClaimValuesAttribute(this ClaimType value)
         {
             var attribute = value.GetAttribute<LocalizedUserClaimValuesAttribute>();
             attribute.Key = value;

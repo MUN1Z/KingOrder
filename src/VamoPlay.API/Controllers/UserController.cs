@@ -30,10 +30,13 @@ namespace VamoPlay.API.Controllers
 
         #region Public Methods
 
-        [HttpGet(Name = "GetAllUsers")]
-        [Authorized(UserClaim.UserRoles_Read)]
-        public async Task<IActionResult> GetAllUsers()
-           => NoContent();
+        [HttpGet(Name = "GetAll")]
+        [Authorized(ClaimType.Users_Read)]
+        public async Task<IActionResult> GetAll([FromQuery] UserFilter filter)
+        {
+            var result = await _userService.GetAll(filter);
+            return Response(result);
+        }
 
         [HttpPost("New")]
         [AllowAnonymous]
