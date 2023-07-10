@@ -38,7 +38,7 @@ namespace VamoPlay.API.IntegrationTests.Factories
                         var ctx = scope?.ServiceProvider.GetService<VamoPlayContext>();
 
                         ctx.Database.EnsureDeleted();
-                        ctx.Database.EnsureCreated();
+                        ctx.Database.Migrate();
                     }
                     catch (Exception ex)
                     {

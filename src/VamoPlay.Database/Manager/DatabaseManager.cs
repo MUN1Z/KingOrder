@@ -26,7 +26,7 @@ namespace VamoPlay.Database.Seed
             VamoPlayContext context,
             UserManager<UserIdentity> userManager)
         {
-            context.Database.EnsureCreated();
+            context.Database.Migrate();
             _context = context;
             _userManager = userManager;
         }
@@ -72,8 +72,6 @@ namespace VamoPlay.Database.Seed
 
                     await RegisterUserAsync(admin);
                 }
-
-                var user = await _context.User.Include(c => c.Roles).SingleOrDefaultAsync();
             }
         }
 
